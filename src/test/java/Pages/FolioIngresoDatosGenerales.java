@@ -206,6 +206,7 @@ public class FolioIngresoDatosGenerales {
 										}else {
 											numero = (int) (Math.random()*n);
 											ScentroSubasta.selectByIndex(numero);
+											/*aqui agrega el final
 										}
 									}
 								}
