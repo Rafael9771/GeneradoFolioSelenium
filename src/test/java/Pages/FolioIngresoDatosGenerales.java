@@ -17,7 +17,8 @@ import helpers.Helpers;
 
 public class FolioIngresoDatosGenerales {
 	private WebDriver driver; 
-	private WebElement idCliente,placas,valuacion,vin,Tvehiculo,Marca,Modelo,Version,anio,danio,origen,centroSubasta;
+	private WebElement idCliente,placas,valuacion,vin,Tvehiculo,Marca,Modelo,Version,anio,danio,origen,centroSubasta,continuar,estado, poblacion
+                ,domicilio, guardar;
 	
 
 
@@ -27,7 +28,9 @@ public class FolioIngresoDatosGenerales {
 
 	}
 
-	public void general(int cont) {
+	public int general(int cont, int tipo) {
+            int folio = 1;
+            do{
 		boolean banSelect=false;
 		Helpers h = new Helpers();
 		h.retencion(10);
@@ -48,14 +51,14 @@ public class FolioIngresoDatosGenerales {
          }else {
         	 fecha += mes;
          }
-         if(cont<10){
-        	 fecha += annio+"000000"+cont;
-         }else if(cont>9 && cont<100) {
-        	 fecha += annio+"00000"+cont;
-         }else if(cont<99 && cont<1000) {
-        	 fecha += annio+"0000"+cont;
-         }else if(cont<999 && cont<10000) {
-        	 fecha += annio+"000"+cont;
+         if(folio<10){
+        	 fecha += annio+"000000"+folio;
+         }else if(folio>9 && folio<100) {
+        	 fecha += annio+"00000"+folio;
+         }else if(folio<99 && folio<1000) {
+        	 fecha += annio+"0000"+folio;
+         }else if(folio<999 && folio<10000) {
+        	 fecha += annio+"000"+folio;
          }else {
         	 JOptionPane.showMessageDialog(null, "Sorry solo se pueden hacer 9999 usuarios");
          }
@@ -64,7 +67,7 @@ public class FolioIngresoDatosGenerales {
 		placas = driver.findElement(By.xpath("//*[@id=\"numpla\"]"));
 		valuacion = driver.findElement(By.xpath("//*[@id=\"idvalu\"]"));
 		vin= driver.findElement(By.xpath("//*[@id=\"numvin\"]"));
-		
+		continuar = driver.findElement(By.xpath("//*[@id=\"btnContinuar\"]"));
 		
 		
 		
@@ -206,7 +209,7 @@ public class FolioIngresoDatosGenerales {
 										}else {
 											numero = (int) (Math.random()*n);
 											ScentroSubasta.selectByIndex(numero);
-											/*aqui agrega el final
+											/*aqui agrega el final*/
 										}
 									}
 								}
@@ -217,6 +220,43 @@ public class FolioIngresoDatosGenerales {
 			}
 		/*con size se hara la seleccion al azar de los selects y con un do while se reetira la seleccion si encuentra un select vacio*/
 		}while(banSelect);
+                continuar.click();
+                continuar.click();
+                continuar.click();
+                
+                estado = driver.findElement(By.xpath("//*[@id=\"cvesta\"]"));
+                Select Sestado = new Select(estado);
+                int numero = (int) (Math.random() * Sestado.getAllSelectedOptions().size());
+                Sestado.selectByIndex(numero);
+                
+                poblacion = driver.findElement(By.xpath("//*[@id=\"cvpobl\"]"));
+                Select Spoblacion = new Select(poblacion);
+                numero = (int) (Math.random() * Spoblacion.getAllSelectedOptions().size());
+                Spoblacion.selectByIndex(numero);
+                
+                domicilio = driver.findElement(By.xpath("//*[@id=\"cvdire\"]"));
+                Select Sdomicilio = new Select(domicilio);
+                numero = (int) (Math.random() * Sdomicilio.getAllSelectedOptions().size());
+                Sdomicilio.selectByIndex(numero);
+                
+                continuar.click();
+                
+                continuar.click();
+                
+                guardar = driver.findElement(By.xpath("//*[@id=\"btnGuardar\"]"));
+                guardar.click();
+                
+                continuar.click();
+                if (folio<(cont+1)) {
+                    Ingreso i = new Ingreso(driver);
+                    
+                    i.rIngreso(tipo);
+                    folio++;
+                }
+                
+            }while(folio < (cont+1));
+                
+            return folio;
 		
 		
 	}

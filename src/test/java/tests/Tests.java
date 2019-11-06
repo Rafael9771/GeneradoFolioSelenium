@@ -18,7 +18,6 @@ import org.testng.annotations.Test;
 import Pages.Ingreso;
 import Pages.Login;
 import Pages.MenuIngreso;
-import Pages.DatosGenerales;
 import helpers.Helpers;
 
 public class Tests {
@@ -36,30 +35,10 @@ public class Tests {
 	@Test(description = "Parte del test donde mandas llamar todas las clases")
 
 	public void Llamar() {
-		/*Helpers h = new Helpers();
-		h.retencion(3);
-		Login pageLogin = new Login(driver);
-		pageLogin.login("QUALI", "123");
-
-		h.retencion(3);
-		MenuIngreso menu = new MenuIngreso(driver);
-		menu.menuI();
-
-		h.retencion(3);
-		Ingreso IngFol = new Ingreso(driver);
-		IngFol.rIngreso();
 		
-		h.retencion(3);
-		DatosGenerales Datos = new DatosGenerales(driver);
-		Datos.general("cliente", "placasU", "valua", "vinn");
-		//15,7,12,17*/
-		
-		WebElement op= driver.findElement(By.id("option"));
-		Select s = new Select(op);
-		s.selectByIndex(2);
-		
-		Helpers h = new Helpers();
-		h.retencion(50);
+		/*DatosGenerales Datos = new DatosGenerales(driver);
+		Datos.general("cliente", "placasU", "valua", "vinn");*/
+		//15,7,12,17
 	}
 
 	@AfterMethod(description = "Cierre del test, toma foto al error si es que existe alguno")
