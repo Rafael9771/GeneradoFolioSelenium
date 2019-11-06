@@ -13,13 +13,14 @@ public class Ingreso {
 		this.driver = dvr;
 	}
 
-	public void rIngreso() {
+	public void rIngreso(int t) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		String[] folio = new String[3];
+		/*String[] folio = new String[3];
 		folio[0]="/html/body/div[2]/div/div[1]/div[1]";
 		folio[1]="/html/body/div[2]/div/div[1]/div[2]";
 		folio[2]="/html/body/div[2]/div/div[1]/div[3]";
-		WebElement regla = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div/div[1]/div[1]")));
+                int numero = (int) (Math.random() * 2);*/
+		WebElement regla = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div/div[1]/div["+t+"]")));
 		regla.click();
 	}
 }
