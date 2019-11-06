@@ -29,7 +29,7 @@ public class FolioIngresoDatosGenerales {
 	}
 
 	public int general(int cont, int tipo) {
-            int folio = 0;
+            int folio = 1;
             do{
 		boolean banSelect=false;
 		Helpers h = new Helpers();
@@ -51,14 +51,14 @@ public class FolioIngresoDatosGenerales {
          }else {
         	 fecha += mes;
          }
-         if(cont<10){
-        	 fecha += annio+"000000"+cont;
-         }else if(cont>9 && cont<100) {
-        	 fecha += annio+"00000"+cont;
-         }else if(cont<99 && cont<1000) {
-        	 fecha += annio+"0000"+cont;
-         }else if(cont<999 && cont<10000) {
-        	 fecha += annio+"000"+cont;
+         if(folio<10){
+        	 fecha += annio+"000000"+folio;
+         }else if(folio>9 && folio<100) {
+        	 fecha += annio+"00000"+folio;
+         }else if(folio<99 && folio<1000) {
+        	 fecha += annio+"0000"+folio;
+         }else if(folio<999 && folio<10000) {
+        	 fecha += annio+"000"+folio;
          }else {
         	 JOptionPane.showMessageDialog(null, "Sorry solo se pueden hacer 9999 usuarios");
          }
@@ -247,14 +247,14 @@ public class FolioIngresoDatosGenerales {
                 guardar.click();
                 
                 continuar.click();
-                if (folio<cont) {
+                if (folio<(cont+1)) {
                     Ingreso i = new Ingreso(driver);
                     
                     i.rIngreso(tipo);
                     folio++;
                 }
                 
-            }while(folio < cont);
+            }while(folio < (cont+1));
                 
             return folio;
 		
