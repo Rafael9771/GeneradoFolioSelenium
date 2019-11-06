@@ -18,6 +18,7 @@ import org.testng.annotations.Test;
 import Pages.Ingreso;
 import Pages.Login;
 import Pages.MenuIngreso;
+import Pages.opciones;
 import helpers.Helpers;
 
 public class Tests {
@@ -35,7 +36,8 @@ public class Tests {
 	@Test(description = "Parte del test donde mandas llamar todas las clases")
 
 	public void Llamar() {
-		
+		opciones o = new opciones(driver);
+                 o.setVisible(true);
 		/*DatosGenerales Datos = new DatosGenerales(driver);
 		Datos.general("cliente", "placasU", "valua", "vinn");*/
 		//15,7,12,17
