@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 /**
  *
- * @author OmeghaX
+ * @author OmeghaX123
  */
 public class CantidadFolio extends javax.swing.JFrame {
     private WebDriver dri;
